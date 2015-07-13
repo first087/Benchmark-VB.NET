@@ -37,6 +37,7 @@
     Private Sub BtnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStart.Click
         Reset()
 
+        Num10M.Enabled = False
         BtnStart.Enabled = False
         Cursor = Cursors.WaitCursor
 
@@ -51,7 +52,7 @@
 
         For i As Byte = 0 To MAX_ROUND - 1
             ' TODO: Change to your benchmark class
-            Using bm As New BM_If_Select(MAX_LOOP_PER_ROUND)
+            Using bm As New BM_If_Select(MAX_LOOP_PER_ROUND * Num10M.Value)
                 message = New Message()
                 message.what = 1            ' Start loop
                 message.obj = Nothing
@@ -124,6 +125,13 @@
                     subItem.Add("----------")
                 Next
 
+                subItem = LvResult.Items.Add("Sum").SubItems
+                For i As Integer = 0 To sumResult.Length - 1
+                    subItem.Add(sumResult(i).ToString("#,##0.0000"))
+                Next
+
+                LvResult.Items(LvResult.Items.Count - 1).ForeColor = Color.DarkGreen
+
                 subItem = LvResult.Items.Add("Avg").SubItems
                 For i As Integer = 0 To sumResult.Length - 1
                     subItem.Add((sumResult(i) / MAX_ROUND).ToString("#,##0.0000"))
@@ -138,6 +146,7 @@
         Progress.Value = 100
 
         Cursor = Cursors.Default
+        Num10M.Enabled = True
         BtnStart.Enabled = True
     End Sub
 End Class
