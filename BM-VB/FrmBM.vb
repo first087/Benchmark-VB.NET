@@ -9,7 +9,7 @@
     Private ReadOnly COLUMN_HEADERS As String() = {"If-ElseIf-Else", "Select-Case"}
 
     Private Const MAX_ROUND As Byte = 10    ' DO NOT CHANGE
-    Private Const MAX_LOOP_PER_ROUND As Integer = Integer.MaxValue  ' Use Integer.MaxValue for Maximum your memory
+    Private Const MAX_LOOP_PER_ROUND As Integer = 10000000  ' Use Integer.MaxValue for Maximum your memory
 
     Public Sub New()
         ' This call is required by the Windows Form Designer.
@@ -72,21 +72,25 @@
 
                 bwRun.ReportProgress(progress + 3, message)
 
-                ' TODO: Benchmark "Choice B"
-                Dim resultB As Double = bm.Run(2)
+                If COLUMN_HEADERS.Length >= 2 Then
+                    ' TODO: Benchmark "Choice B"
+                    Dim resultB As Double = bm.Run(2)
 
-                messageResult.obj = resultB ' Data
-                sumResult(1) += resultB
+                    messageResult.obj = resultB ' Data
+                    sumResult(1) += resultB
 
-                bwRun.ReportProgress(progress + 6, message)
+                    bwRun.ReportProgress(progress + 6, message)
+                End If
 
-                '' TODO: Benchmark "Choice C"
-                'Dim resultC As Double = bm.Run(3)
+                If COLUMN_HEADERS.Length >= 3 Then
+                    ' TODO: Benchmark "Choice C"
+                    Dim resultC As Double = bm.Run(3)
 
-                'messageResult.obj = resultC ' Data
-                'sumResult(2) += resultC
+                    messageResult.obj = resultC ' Data
+                    sumResult(2) += resultC
 
-                'bwRun.ReportProgress(progress + 9, message)
+                    bwRun.ReportProgress(progress + 9, message)
+                End If
             End Using
         Next
 
