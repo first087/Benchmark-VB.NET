@@ -1,10 +1,12 @@
 ﻿Public Class FrmBM
 
     ' TODO: Set benchmark header
-    Private Const BM_HEADER As String = "If"
+    'Private Const BM_HEADER As String = "If"
+    Private Const BM_HEADER As String = "If vs Select"
 
     ' TODO: Set benchmark case
-    Private ReadOnly COLUMN_HEADERS As String() = {"If-Else", "Default-If", "If Operator"}
+    'Private ReadOnly COLUMN_HEADERS As String() = {"If-Else", "Default-If", "If Operator"}
+    Private ReadOnly COLUMN_HEADERS As String() = {"If-ElseIf-Else", "Select-Case"}
 
     Private Const MAX_ROUND As Byte = 10    ' DO NOT CHANGE
     Private Const MAX_LOOP_PER_ROUND As Integer = Integer.MaxValue  ' Use Integer.MaxValue for Maximum your memory
@@ -49,7 +51,7 @@
 
         For i As Byte = 0 To MAX_ROUND - 1
             ' TODO: Change to your benchmark class
-            Using bm As New BM_If(MAX_LOOP_PER_ROUND)
+            Using bm As New BM_If_Select(MAX_LOOP_PER_ROUND)
                 message = New Message()
                 message.what = 1            ' Start loop
                 message.obj = Nothing
@@ -78,13 +80,13 @@
 
                 bwRun.ReportProgress(progress + 6, message)
 
-                ' TODO: Benchmark "Choice C"
-                Dim resultC As Double = bm.Run(3)
+                '' TODO: Benchmark "Choice C"
+                'Dim resultC As Double = bm.Run(3)
 
-                messageResult.obj = resultC ' Data
-                sumResult(2) += resultC
+                'messageResult.obj = resultC ' Data
+                'sumResult(2) += resultC
 
-                bwRun.ReportProgress(progress + 9, message)
+                'bwRun.ReportProgress(progress + 9, message)
             End Using
         Next
 
