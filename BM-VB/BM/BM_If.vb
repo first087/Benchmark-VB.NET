@@ -10,16 +10,16 @@
 
         Select Case bmCase
             Case 1  ' If-Else
-                If bmInput >= 50 Then
+                If bmInput >= 51 Then
                     result = True
                 Else
                     result = False
                 End If
             Case 2  ' Default-If
                 result = False
-                If bmInput >= 50 Then result = True
+                If bmInput >= 51 Then result = True
             Case 3  ' If Operator
-                result = If(bmInput >= 50, True, False)
+                result = If(bmInput >= 51, True, False)
         End Select
     End Sub
 End Class
