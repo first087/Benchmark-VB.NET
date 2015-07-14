@@ -1,8 +1,8 @@
 ﻿Friend MustInherit Class BMBase
     Implements IDisposable
 
-    Private RANDOM_MIN As Integer = 1
-    Private RANDOM_MAX As Integer = 100
+    Private Const RANDOM_MIN As Integer = 1
+    Private Const RANDOM_MAX As Integer = 100
 
     Private randomList As List(Of Byte)
 
