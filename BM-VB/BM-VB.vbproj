@@ -71,6 +71,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BM\BM_If_Select.vb" />
+    <Compile Include="BM\BM_Loop.vb" />
+    <Compile Include="BM\BM_Loop_Recursive.vb">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FrmBM.vb">
       <SubType>Form</SubType>
     </Compile>
