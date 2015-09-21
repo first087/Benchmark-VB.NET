@@ -3,12 +3,14 @@
     ' TODO: Set benchmark header
     'Private Const BM_HEADER As String = "If"
     'Private Const BM_HEADER As String = "If vs Select"
-    Private Const BM_HEADER As String = "Loop"
+    'Private Const BM_HEADER As String = "Loop"
+    Private Const BM_HEADER As String = "Loop vs Recursive"
 
     ' TODO: Set benchmark case
     'Private ReadOnly COLUMN_HEADERS As String() = {"If-Else", "Default-If", "If Operator"}
     'Private ReadOnly COLUMN_HEADERS As String() = {"If-ElseIf-Else", "Select-Case"}
-    Private ReadOnly COLUMN_HEADERS As String() = {"For", "While", "Do-While"}
+    'Private ReadOnly COLUMN_HEADERS As String() = {"For", "While", "Do-While"}
+    Private ReadOnly COLUMN_HEADERS As String() = {"For", "Recursive"}
 
     Private Const MAX_ROUND As Byte = 10    ' DO NOT CHANGE
     Private Const MAX_LOOP_PER_ROUND As Integer = 10000000  ' Use Integer.MaxValue for Maximum your memory
@@ -54,7 +56,7 @@
 
         For i As Byte = 0 To MAX_ROUND - 1
             ' TODO: Change to your benchmark class
-            Using bm As New BM_Loop(MAX_LOOP_PER_ROUND * Num10M.Value)
+            Using bm As New BM_Loop_Recursive(MAX_LOOP_PER_ROUND * Num10M.Value)
                 message = New Message()
                 message.what = 1            ' Start loop
                 message.obj = Nothing
